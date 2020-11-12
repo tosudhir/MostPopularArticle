@@ -42,9 +42,37 @@ class MostPopularArticleTests: XCTestCase {
         }
         
         waitForExpectations(timeout: 5) { (error) in
-            print(articleResponse?[0].title)
             XCTAssertTrue(articleResponse != nil)
         }
+    }
+    
+    func createMockArticle() -> Article {
+        let thumbnail = ArticleMediaMetaData(url: "https://small-image.jpg", format: "Thumbnail")
+        let mediumImage = ArticleMediaMetaData(url: "https://small-image.jpg", format: "Medium")
+        
+        let media = ArticleMedia(mediaMetaData: [thumbnail, mediumImage])
+        
+        let article = Article(title: "Biden Wins Presidency", byline: "By Jonathan Martin and Alexander Burns", abstract: "Joseph R. Biden Jr. achieved victory", publishedDate: "2020-11-07", media: [media])
+        return article
+    }
+    
+    func testArticleViewModel() {
+        let article = createMockArticle()
+        let articleViewModel = ArticleViewModel(article: article)
+        XCTAssertEqual(article.title, articleViewModel.title)
+        XCTAssertEqual(article.byline, articleViewModel.byline)
+        XCTAssertEqual(article.publishedDate, articleViewModel.publishedDate)
+        XCTAssertEqual(article.abstract, articleViewModel.abstract)
+        
+        let mediaMetaData = article.media.first?.mediaMetadata
+        let thumbnailUrlString = mediaMetaData?.filter{
+            $0.format == "Thumbnail"
+            }.first?.url
+        XCTAssertEqual(thumbnailUrlString, articleViewModel.thumbnailUrlString)
+        let imageUrlString = mediaMetaData?.filter{
+            $0.format == "Medium"
+            }.first?.url
+        XCTAssertEqual(imageUrlString, articleViewModel.imageUrlString)
     }
 
 }
