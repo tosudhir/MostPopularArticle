@@ -29,5 +29,22 @@ class MostPopularArticleTests: XCTestCase {
             // Put the code you want to measure the time of here.
         }
     }
+    
+    func testArticleDataFromServerCommunication() throws {
+        let manager = ApiManager()
+        var articleResponse: [Article]?
+        let articleExpectation = expectation(description: "articles")
+        manager.fetchArticles(period: .day) { (article) in
+            articleResponse = article
+            articleExpectation.fulfill()
+        } failure: { (message) in
+            print(message)
+        }
+        
+        waitForExpectations(timeout: 5) { (error) in
+            print(articleResponse?[0].title)
+            XCTAssertTrue(articleResponse != nil)
+        }
+    }
 
 }
