@@ -44,5 +44,56 @@ class ArticleViewControllerTests: XCTestCase {
         XCTAssertNotNil(controller.articleTableView,
                         "Controller should have a tableview")
     }
+    
+    func testTableViewHasRowAsData() {
+        guard let controller = getMockViewController() else {
+            return XCTFail("Could not instantiate ViewController from main storyboard")
+        }
+        controller.loadViewIfNeeded()
+        let manager = ApiManager()
+        var viewModels: [ArticleViewModel]?
+        let articleExpectation = expectation(description: "articles")
+        manager.fetchArticles(period: .day) { (article) in
+            viewModels = article.map{
+             ArticleViewModel(article: $0)
+            }
+            articleExpectation.fulfill()
+        } failure: { (message) in
+            print(message)
+        }
+        waitForExpectations(timeout: 10, handler: nil)
+        controller.articleTableView.reloadData()
+        let numberOfRow = controller.tableView(controller.articleTableView, numberOfRowsInSection: 0)
+        XCTAssertEqual(numberOfRow, viewModels?.count ?? 0, "Number of rows in section 0 should match article list.")
+    }
+    
+    func testCellForRow() {
+        let tableView = UITableView()
+        tableView.register(UITableViewCell.self, forCellReuseIdentifier: "Cell")
+        guard let controller = getMockViewController() else {
+            return XCTFail("Could not instantiate ViewController from main storyboard")
+        }
+        controller.loadViewIfNeeded()
+        
+        let manager = ApiManager()
+        var viewModels: [ArticleViewModel]?
+        let articleExpectation = expectation(description: "articles")
+        manager.fetchArticles(period: .day) { (article) in
+            viewModels = article.map{
+             ArticleViewModel(article: $0)
+            }
+            articleExpectation.fulfill()
+        } failure: { (message) in
+            print(message)
+        }
+
+        waitForExpectations(timeout: 10, handler: nil)
+        if let cell = controller.tableView(controller.articleTableView, cellForRowAt: IndexPath(row: 0, section: 0)) as? ArticleCell {
+      
+            XCTAssertEqual(cell.articleTitleLabel.text, viewModels?[0].title,
+                       "The first cell should display name of article list's first name")
+        }
+    }
+    
 
 }

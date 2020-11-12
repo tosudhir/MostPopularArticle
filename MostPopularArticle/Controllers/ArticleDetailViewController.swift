@@ -6,7 +6,7 @@
 //
 
 import UIKit
-//import SDWebImage
+import SDWebImage
 
 class ArticleDetailViewController: UIViewController {
 
@@ -26,7 +26,7 @@ class ArticleDetailViewController: UIViewController {
     }
     
     private func setupArticleData() {
-        //articleImageView.sd_setImage(with: URL(string: articleViewModel.imageUrlString ?? ""), placeholderImage: nil)
+        articleImageView.sd_setImage(with: URL(string: articleViewModel.imageUrlString ?? ""), placeholderImage: nil)
         articleTitleLabel.text = articleViewModel.title
         publisherLabel.text = articleViewModel.byline
         dateLabel.text = articleViewModel.publishedDate

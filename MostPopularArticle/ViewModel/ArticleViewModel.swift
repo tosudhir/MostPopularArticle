@@ -15,6 +15,7 @@ struct ArticleViewModel {
     let abstract: String
     let thumbnailUrlString: String?
     let imageUrlString: String?
+    let largeImageUrlString: String?
     
     init(article: Article) {
         self.title = article.title
@@ -23,10 +24,13 @@ struct ArticleViewModel {
         self.abstract = article.abstract
         let mediaMetaData = article.media.first?.mediaMetadata
         self.thumbnailUrlString = mediaMetaData?.filter{
-            $0.format == "Thumbnail"
+            $0.format == "Standard Thumbnail"
             }.first?.url
         self.imageUrlString = mediaMetaData?.filter{
-            $0.format == "Medium"
+            $0.format == "mediumThreeByTwo210"
+            }.first?.url
+        self.largeImageUrlString = mediaMetaData?.filter{
+            $0.format == "mediumThreeByTwo440"
             }.first?.url
     }
 }

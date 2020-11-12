@@ -47,10 +47,11 @@ class MostPopularArticleTests: XCTestCase {
     }
     
     func createMockArticle() -> Article {
-        let thumbnail = ArticleMediaMetaData(url: "https://small-image.jpg", format: "Thumbnail")
-        let mediumImage = ArticleMediaMetaData(url: "https://small-image.jpg", format: "Medium")
+        let thumbnail = ArticleMediaMetaData(url: "https://small-image.jpg", format: "Standard Thumbnail")
+        let mediumImage = ArticleMediaMetaData(url: "https://small-image.jpg", format: "mediumThreeByTwo210")
+        let largeImage = ArticleMediaMetaData(url: "https://large-image.jpg", format: "mediumThreeByTwo440")
         
-        let media = ArticleMedia(mediaMetaData: [thumbnail, mediumImage])
+        let media = ArticleMedia(mediaMetaData: [thumbnail, mediumImage, largeImage])
         
         let article = Article(title: "Biden Wins Presidency", byline: "By Jonathan Martin and Alexander Burns", abstract: "Joseph R. Biden Jr. achieved victory", publishedDate: "2020-11-07", media: [media])
         return article
@@ -66,13 +67,17 @@ class MostPopularArticleTests: XCTestCase {
         
         let mediaMetaData = article.media.first?.mediaMetadata
         let thumbnailUrlString = mediaMetaData?.filter{
-            $0.format == "Thumbnail"
+            $0.format == "Standard Thumbnail"
             }.first?.url
         XCTAssertEqual(thumbnailUrlString, articleViewModel.thumbnailUrlString)
         let imageUrlString = mediaMetaData?.filter{
-            $0.format == "Medium"
+            $0.format == "mediumThreeByTwo210"
             }.first?.url
         XCTAssertEqual(imageUrlString, articleViewModel.imageUrlString)
+        let largeUrlString = mediaMetaData?.filter{
+            $0.format == "mediumThreeByTwo440"
+            }.first?.url
+        XCTAssertEqual(largeUrlString, articleViewModel.largeImageUrlString)
     }
 
 }
