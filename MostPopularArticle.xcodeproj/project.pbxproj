@@ -10,6 +10,7 @@
 		1B515CCE05460BAE6FAB7C8B /* Pods_MostPopularArticleTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 072F2F52F956FFD7E41E28DB /* Pods_MostPopularArticleTests.framework */; };
 		BCAC8D99D368BEF58BD1A4B2 /* Pods_MostPopularArticle_MostPopularArticleUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B7135107612CEA4D66B35445 /* Pods_MostPopularArticle_MostPopularArticleUITests.framework */; };
 		C8560F39CD681D866C8BCF52 /* Pods_MostPopularArticle.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 552F9B2F3ECEFF4AAFC1B5F7 /* Pods_MostPopularArticle.framework */; };
+		D73B80E4255E4D0C00D32CCD /* ArticleDetailViewControllerUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D73B80E3255E4D0C00D32CCD /* ArticleDetailViewControllerUITests.swift */; };
 		D7C7C6A5255CFDC50012AAF2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7C7C6A4255CFDC50012AAF2 /* AppDelegate.swift */; };
 		D7C7C6A7255CFDC50012AAF2 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7C7C6A6255CFDC50012AAF2 /* SceneDelegate.swift */; };
 		D7C7C6AC255CFDC50012AAF2 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D7C7C6AA255CFDC50012AAF2 /* Main.storyboard */; };
@@ -56,6 +57,7 @@
 		A415DEB53543C94CD14A509C /* Pods-MostPopularArticle.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MostPopularArticle.release.xcconfig"; path = "Target Support Files/Pods-MostPopularArticle/Pods-MostPopularArticle.release.xcconfig"; sourceTree = "<group>"; };
 		B7135107612CEA4D66B35445 /* Pods_MostPopularArticle_MostPopularArticleUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MostPopularArticle_MostPopularArticleUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B7362F6091CD3322A12501E4 /* Pods-MostPopularArticleTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MostPopularArticleTests.release.xcconfig"; path = "Target Support Files/Pods-MostPopularArticleTests/Pods-MostPopularArticleTests.release.xcconfig"; sourceTree = "<group>"; };
+		D73B80E3255E4D0C00D32CCD /* ArticleDetailViewControllerUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleDetailViewControllerUITests.swift; sourceTree = "<group>"; };
 		D7C7C6A1255CFDC50012AAF2 /* MostPopularArticle.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MostPopularArticle.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D7C7C6A4255CFDC50012AAF2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D7C7C6A6255CFDC50012AAF2 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -189,6 +191,7 @@
 			children = (
 				D7C7C6C6255CFDC60012AAF2 /* MostPopularArticleUITests.swift */,
 				D7C7C6C8255CFDC60012AAF2 /* Info.plist */,
+				D73B80E3255E4D0C00D32CCD /* ArticleDetailViewControllerUITests.swift */,
 			);
 			path = MostPopularArticleUITests;
 			sourceTree = "<group>";
@@ -552,6 +555,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D73B80E4255E4D0C00D32CCD /* ArticleDetailViewControllerUITests.swift in Sources */,
 				D7C7C6C7255CFDC60012AAF2 /* MostPopularArticleUITests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
