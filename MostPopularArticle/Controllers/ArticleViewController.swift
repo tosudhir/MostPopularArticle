@@ -42,17 +42,17 @@ class ArticleViewController: UIViewController {
     }
     
     private func fetchArticles() {
-        //showLoadingIndicator()
+        showLoadingIndicator()
         let manager = ApiManager()
         manager.fetchArticles(period: .day) { [weak self](articles) in
             self?.articleViewModels = articles.map{
                 ArticleViewModel(article: $0)
             }
             self?.articleTableView.reloadData()
-            //self.hideLodingIndicatore()
-        } failure: { (message) in
-            //self.hideLodingIndicatore()
-            self.showAlert(title: "Error", message: message, actions: ["OK"], completion: nil)
+            self?.hideLodingIndicatore()
+        } failure: { [weak self](message) in
+            self?.hideLodingIndicatore()
+            self?.showAlert(title: "Error", message: message, actions: ["OK"], completion: nil)
         }
 
     }
