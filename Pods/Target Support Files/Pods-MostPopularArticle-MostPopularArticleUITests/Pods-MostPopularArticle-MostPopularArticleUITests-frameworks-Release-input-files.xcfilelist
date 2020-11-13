@@ -1,0 +1,3 @@
+${PODS_ROOT}/Target Support Files/Pods-MostPopularArticle-MostPopularArticleUITests/Pods-MostPopularArticle-MostPopularArticleUITests-frameworks.sh
+${BUILT_PRODUCTS_DIR}/SDWebImage/SDWebImage.framework
+${BUILT_PRODUCTS_DIR}/SVProgressHUD/SVProgressHUD.framework

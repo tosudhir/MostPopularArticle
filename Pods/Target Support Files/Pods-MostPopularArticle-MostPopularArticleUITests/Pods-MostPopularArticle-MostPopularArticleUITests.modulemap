@@ -1,0 +1,6 @@
+framework module Pods_MostPopularArticle_MostPopularArticleUITests {
+  umbrella header "Pods-MostPopularArticle-MostPopularArticleUITests-umbrella.h"
+
+  export *
+  module * { export * }
+}
